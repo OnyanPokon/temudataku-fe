@@ -8,7 +8,10 @@ export default function AntdConfigProviders({ children }) {
     <StyleProvider
       theme={{
         token: {
-          fontFamily: 'Plus Jakarta Sans'
+          fontFamily: 'Plus Jakarta Sans',
+          colorPrimary: '#08b06d',
+          colorInfo: '#08b06d',
+          colorSuccess: '#1677ff'
         }
       }}
       button={{

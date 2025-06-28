@@ -3,7 +3,7 @@ import { findItemByKey } from '@/utils/landingLink';
 import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Drawer, Grid, Image, Menu, Skeleton } from 'antd';
 import PropTypes from 'prop-types';
-import {useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -25,16 +25,14 @@ const Navbar = () => {
       navigate(clickedItem.key);
     }
   };
-  
-  const loadingData = false
 
-
+  const loadingData = false;
 
   const isDesktop = breakpoints.lg || breakpoints.xl || breakpoints.xxl;
 
   return (
     <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-x-4 p-4">
-      <div className="flex w-fit items-center gap-x-4 lg:w-full">
+      <div className="flex w-fit items-center gap-x-2 lg:w-full">
         {isDesktop ? (
           <>
             {loadingData ? (
@@ -44,10 +42,7 @@ const Navbar = () => {
               </div>
             ) : (
               <>
-                <Image width={40} preview={false} src={''} />
-                <b>
-                  <span className="text-blue-500">App Name</span>{' '}
-                </b>
+                <Image width={60} preview={false} src={'/logo.png'} />
               </>
             )}
             <Menu style={{ minWidth: 0, flex: 'auto', border: 'none' }} mode="horizontal" items={landingLink} activeKey="" onClick={handleMenuClick} />

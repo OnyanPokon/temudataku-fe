@@ -1,7 +1,7 @@
 import { DashboardFooter, DashboardSider } from '@/components';
-import { useAuth } from '@/hooks';
-import { LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Button, Dropdown, Layout, Skeleton, Space, theme } from 'antd';
+import { useAuth, useCart } from '@/hooks';
+import { LogoutOutlined, MenuOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Badge, Button, Dropdown, Layout, Skeleton, Space, theme } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import { useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Dashboard = () => {
   const { logout, token, user } = useAuth();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { cart } = useCart();
 
   useEffect(() => {
     if (token) return;
@@ -67,8 +68,9 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <span>Hai, {user.name}</span>
-
+                  <Badge count={cart?.products?.length}>
+                    <Button onClick={() => navigate('/cart')} icon={<ShoppingCartOutlined />} />
+                  </Badge>
                   <Dropdown menu={{ items }}>
                     <a onClick={(e) => e.preventDefault()}>
                       <Space>

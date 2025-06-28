@@ -6,7 +6,7 @@ const Auth = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const redirect = searchParams.get('redirect') || '/dashboard';
+  const redirect = searchParams.get('redirect') || '/catalogue';
 
   useEffect(() => {
     if (!token) return;
@@ -14,7 +14,7 @@ const Auth = () => {
     if (redirect && !redirect.includes('/auth')) {
       navigate(redirect);
     } else {
-      navigate('/dashboard');
+      navigate('/catalogue');
     }
   }, [navigate, redirect, token]);
 

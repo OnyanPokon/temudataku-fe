@@ -1,15 +1,14 @@
 import * as Auth from '@/pages/auth';
 import * as Dashboard from '@/pages/dashboard';
 import * as Landing from '@/pages/landing';
-import { DashboardOutlined,} from '@ant-design/icons';
+import { ShopOutlined } from '@ant-design/icons';
 
 export const landingLink = [
   {
     label: 'Beranda',
     key: '/',
     element: Landing.Home
-  },
-  
+  }
 ];
 
 /**
@@ -29,11 +28,10 @@ export const landingLink = [
  */
 export const dashboardLink = [
   {
-    label: 'Overview',
-    icon: DashboardOutlined,
-    children: [{ path: '/dashboard', label: 'Dashboard', element: Dashboard.Dashboard }]
-  },
- 
+    label: 'Produk',
+    icon: ShopOutlined,
+    children: [{ path: '/catalogue', label: 'Katalog', element: Dashboard.Catalogue }]
+  }
 ].map((item) => ({
   ...item,
   permissions: item.children.flatMap((child) => child.permissions).filter((permission) => permission),
